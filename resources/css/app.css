@@ -1,0 +1,182 @@
+@import "tailwindcss";
+@source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
+@source "../../storage/framework/views/*.php";
+@source "../**/*.blade.php";
+@source "../**/*.js";
+@source "../../node_modules/flowbite";
+
+@plugin "flowbite/plugin";
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+    /* Mantenemos tus grises profundos */
+    --color-gray-950: #0c1216;
+    --color-gray-900: #111b21;
+    --color-gray-800: #202c33;
+    --color-gray-700: #2a3942;
+
+    /* DEFINICIÓN DE TU MARCA MÉDICALIA */
+    --color-primary-500: #44B0B3; /* Tu color principal */
+    --color-primary-600: #389a9d; /* Hover */
+    --color-primary-700: #2d7d80;
+
+    /* Esto hace que todos los botones de Breeze usen tu color automáticamente */
+    --color-indigo-500: var(--color-primary-500);
+    --color-indigo-600: var(--color-primary-600);
+}
+
+@layer base {
+    /* Brillo para los textos secundarios en modo oscuro sin que parezca Navidad */
+    .dark .text-gray-500 {
+        color: #94a3b8 !important; /* Un gris azulado claro, muy legible */
+    }
+}
+/* Scrollbar personalizado — se adapta a dark/light */
+
+/* Webkit (Chrome, Edge, Safari) */
+.custom-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+.custom-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+    background: rgba(156, 163, 175, 0.4); /* gris claro — light mode */
+    border-radius: 99px;
+}
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(156, 163, 175, 0.7);
+}
+
+/* Dark mode */
+.dark .custom-scroll::-webkit-scrollbar-thumb {
+    background: rgba(75, 85, 99, 0.6); /* gris oscuro — dark mode */
+}
+.dark .custom-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(75, 85, 99, 0.9);
+}
+
+/* Firefox */
+.custom-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(156, 163, 175, 0.4) transparent;
+}
+.dark .custom-scroll {
+    scrollbar-color: rgba(75, 85, 99, 0.6) transparent;
+}
+/* ── Flowbite Datepicker: dark/light ────────────────────────── */
+/* ── Flowbite / Vanilla Datepicker ───────────────────────────── */
+.datepicker-picker {
+    background-color: #ffffff !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 1rem !important;
+    padding: 0.75rem !important;
+    box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.dark .datepicker-picker {
+    background-color: #001516 !important;
+    border-color: #334155 !important;
+    box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* header */
+.datepicker-header {
+    color: #111827 !important;
+}
+
+.dark .datepicker-header {
+    color: #f8fafc !important;
+}
+
+/* botones prev / next / switch */
+.datepicker-controls .button,
+.datepicker-controls .view-switch,
+.datepicker-controls .prev-btn,
+.datepicker-controls .next-btn {
+    background: transparent !important;
+    color: #111827 !important;
+    fill: #111827 !important;
+    border-radius: 0.75rem !important;
+    font-weight: 700 !important;
+}
+
+.dark .datepicker-controls .button,
+.dark .datepicker-controls .view-switch,
+.dark .datepicker-controls .prev-btn,
+.dark .datepicker-controls .next-btn {
+    color: #f8fafc !important;
+    fill: #f8fafc !important;
+}
+
+.datepicker-controls .button:hover,
+.datepicker-controls .view-switch:hover,
+.datepicker-controls .prev-btn:hover,
+.datepicker-controls .next-btn:hover {
+    background-color: #f3f4f6 !important;
+}
+
+.dark .datepicker-controls .button:hover,
+.dark .datepicker-controls .view-switch:hover,
+.dark .datepicker-controls .prev-btn:hover,
+.dark .datepicker-controls .next-btn:hover {
+    background-color: #1e293b !important;
+}
+
+/* título mes/año */
+.datepicker-controls .view-switch {
+    color: #111827 !important;
+}
+
+.dark .datepicker-controls .view-switch {
+    color: #f8fafc !important;
+}
+
+/* días de semana */
+.days-of-week .dow,
+.datepicker-view .dow {
+    color: #6b7280 !important;
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+}
+
+.dark .days-of-week .dow,
+.dark .datepicker-view .dow {
+    color: #94a3b8 !important;
+}
+
+/* días */
+.datepicker-cell {
+    color: #374151 !important;
+    border-radius: 0.75rem !important;
+}
+
+.dark .datepicker-cell {
+    color: #e5e7eb !important;
+}
+
+.datepicker-cell:hover:not(.disabled):not(.selected) {
+    background-color: rgba(82, 171, 177, 0.18) !important;
+    color: #52ABB1 !important;
+}
+
+.datepicker-cell.selected,
+.datepicker-cell.selected:hover {
+    background-color: #52ABB1 !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+.datepicker-cell.today:not(.selected) {
+    background-color: rgba(82, 171, 177, 0.12) !important;
+    color: #52ABB1 !important;
+    font-weight: 700 !important;
+}
+
+.datepicker-cell.disabled,
+.datepicker-cell.prev,
+.datepicker-cell.next {
+    opacity: 0.4 !important;
+}
